@@ -34,9 +34,9 @@
     <main id="main-area" class="main-content container">
 
         <div class="booking-content">
+            <h1>Cruise</h1>
             <h1>Cristina Rose</h1>
-            <h2>Cruise Booking Services</h2>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book./p>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
         </div>
 
 
@@ -44,17 +44,17 @@
             <h3>Book Ocean Time</h3>
             <div class="inputs">
                 <div class="input-group">
-                    <label for="">Flying From</label>
-                    <input id="flying-from" class="inp-style" type="text" name="" placeholder="Dhaka, Bangladesh" required>
+                    <label for="">Leave From</label>
+                    <input id="leave-from" class="inp-style" type="text" name="" placeholder="Dhaka, Bangladesh" required>
                 </div>
                 <div class="input-group">
-                    <label for="">Flying To</label>
-                    <input id="flying-to" class="inp-style" type="text" name="" placeholder="New York, United States" required>
+                    <label for="">Destination</label>
+                    <input id="cruise-destination" class="inp-style" type="text" name="" placeholder="New York, United States" required>
                 </div>
             </div>
             <div class="inputs">
                 <div class="input-group">
-                    <label" for="">Departure</label>
+                    <label for="">Departure</label>
                     <input id="departure-date" class="inp-style" type="date" name="" required>
                 </div>
                 <div class="input-group">
@@ -68,7 +68,7 @@
                     <input id="firstclass-count" class="inp-style inp-width" type="text" value="0" name="">
                 </div>
                 <div class="plus-minus-btn">
-                    <p> <span onclick="handleTicketQuantity('firstclass', true)" class="plus bg-dark">+</span> <span onclick="handleTicketQuantity('firstclass', false)" class="minus bg-dark">-</span> </p>
+                    <p> <span onclick="handleTicketQuantity('firstclass', true)" class="plus button-design bg-dark">+</span> <span onclick="handleTicketQuantity('firstclass', false)" class="minus button-design bg-dark">-</span> </p>
                 </div>
             </div>
             
@@ -78,7 +78,7 @@
                     <input id="economyclass-count" class="inp-style inp-width" type="text" value="0" name="">
                 </div>
                 <div class="plus-minus-btn">
-                    <p> <span onclick="handleTicketQuantity('economyclass', true)" class="plus bg-dark">+</span> <span onclick="handleTicketQuantity('economyclass', false)" class="minus bg-dark">-</span> </p>
+                    <p> <span onclick="handleTicketQuantity('economyclass', true)" class="plus button-design bg-dark">+</span> <span onclick="handleTicketQuantity('economyclass', false)" class="minus button-design bg-dark">-</span> </p>
                 </div>
             </div>
             <div class="calculations">
@@ -109,19 +109,18 @@
                     </div>
                 </div>
             </div>
-            <button onclick="createInvoice()" class="btn-style">Book Now</button>
+            <button onclick="createInvoice()" onsubmit="return validateForm()" class="btn-style">Book Now</button>
         </div>
     </main>
     <section id="invoice-area" class="invoice-section">
         <h2 class="text-center invoice-title">Invoice</h2>
         <div class="invoice-details row">
             <div class="col-md-6 cruise-details">
-                <h2>Cristina Rose</h2>
-                <h3>Cruise Booking Services</h3>
+                <h2>Cruise Cristina Rose</h2>
             </div>
             <div class="col-md-6">
-                <h6>Flying From: <span id="invoice-flyingFrom"></span></h6>
-                <h6>Flying To: <span id="invoice-flyingTo"></span></h6>
+                <h6>Leave From: <span id="invoice-leaveFrom"></span></h6>
+                <h6>Destination: <span id="invoice-destination"></span></h6>
                 <h6>Departure: <span id="invoice-departure"></span></h6>
                 <h6>Return: <span id="invoice-return"></span></h6>
             </div>
@@ -239,11 +238,11 @@
             invoiceArea.style.display = "block";
 
             //Send Invoice Details
-            const flyingFrom = document.getElementById('flying-from').value;
-            document.getElementById('invoice-flyingFrom').innerText = flyingFrom;
+            const leaveFrom = document.getElementById('leave-from').value;
+            document.getElementById('invoice-leaveFrom').innerText = leaveFrom;
 
-            const flyingTo = document.getElementById('flying-to').value;
-            document.getElementById('invoice-flyingTo').innerText = flyingTo;
+            const destination = document.getElementById('cruise-destination').value;
+            document.getElementById('invoice-destination').innerText = destination;
 
             const departureDate = document.getElementById('departure-date').value;
             document.getElementById('invoice-departure').innerText = departureDate;
@@ -251,6 +250,7 @@
             const returnDate = document.getElementById('return-date').value;
             document.getElementById('invoice-return').innerText = returnDate;
         }
+
     </script>
 </body>
 </html>

@@ -7,7 +7,7 @@
 }
 body{
     font-family: 'Roboto', sans-serif;
-    background:url("images/ship.png");
+    background:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url("images/ship.png");
     background-repeat: no-repeat;
     background-position: center center;
     background-attachment: scroll;
@@ -52,16 +52,10 @@ nav ul li a:hover, a.active{
     color: lightcyan;
     width: 100%;
     float: left;
-    margin-left: 50px;
+    margin-left: 40px;
 }
 .booking-content h1{
     font-size: 70px;
-    text-transform: uppercase;
-    font-family: 'Bebas Neue', cursive;
-    font-weight: 500;
-}
-.booking-content h2{
-    font-size: 50px;
     text-transform: uppercase;
     font-family: 'Bebas Neue', cursive;
     font-weight: 500;
@@ -76,13 +70,13 @@ nav ul li a:hover, a.active{
     margin-left: 180px;
 }
 .booking-form h3{
-    margin: 10px 0px;
+    margin: 5px 0px;
 }
 .booking-form  .input-group{
-    margin: 10px 0;
+    margin: 5px 0;
 }
 .booking-form  .calculations{
-    margin: 10px 0;
+    margin: 5px 0;
 }
 .booking-form  .calculations p{
     font-weight: 500;
@@ -98,6 +92,9 @@ nav ul li a:hover, a.active{
     border-radius: 4px;
     margin: 10px 0;
 }
+label{
+    font-weight: bold;
+}
 .f-class{
     display: flex;
     justify-content: space-between;
@@ -106,8 +103,7 @@ nav ul li a:hover, a.active{
 .inp-width{
     min-width: 300px;
 }
-
-.plus-minus-btn .plus {
+.plus-minus-btn .button-design{
     margin-top: 35px;
     cursor: pointer;
     display: inline-block;
@@ -118,28 +114,21 @@ nav ul li a:hover, a.active{
     font: 30px/1 Arial,sans-serif;
     text-align: center;
     border-radius: 50%;
+}
+.plus-minus-btn .plus {
     padding: 2px;
-    margin-right: 10px;
+    margin-right: 40px;
     }
     .plus-minus-btn .minus {
-    margin-top: 35px;
-    cursor: pointer;
-    display: inline-block;
-    vertical-align: top;
-    color: white;
-    width: 30px;
-    height: 30px;
-    font: 30px/1 Arial,sans-serif;
-    text-align: center;
-    border-radius: 50%;
     background-clip: padding-box;
+    margin-right: 20px;
 }
 
 .minus:hover{
-    background-color: #717fe0 !important;
+    background-color: #E33741 !important;
 }
 .plus:hover{
-    background-color: #717fe0 !important;
+    background-color: #E33741 !important;
 }
 
 .booking-form .inputs{
@@ -175,7 +164,7 @@ nav ul li a:hover, a.active{
     height: 700px;
 }
 .invoice-title{
-    margin: 10px 0 40px 0;
+    margin: 10px 0 30px 0;
 }
 
 .invoice-table{
@@ -184,6 +173,8 @@ nav ul li a:hover, a.active{
 }
 
 .cruise-details{
-    padding-left: 10%;
-    padding-top: 10px;
+    background:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5));
+    padding-left: 12%;
+    padding-top: 35px;
+    color: honeydew;
 }
