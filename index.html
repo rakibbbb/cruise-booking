@@ -31,7 +31,7 @@
     </header>
 
     <!--Booking Section-->
-    <main class="main-content container">
+    <main id="main-area" class="main-content container">
 
         <div class="booking-content">
             <h1>Cristina Rose</h1>
@@ -44,20 +44,20 @@
             <h3>Book Ocean Time</h3>
             <div class="input-group">
                 <label for="">Flying From</label>
-                <input class="inp-style" type="text" name="" placeholder="Dhaka, Bangladesh">
+                <input id="flying-from" class="inp-style" type="text" name="" placeholder="Dhaka, Bangladesh" required>
             </div>
             <div class="input-group">
                 <label for="">Flying To</label>
-                <input class="inp-style" type="text" name="" placeholder="New York, United States">
+                <input id="flying-to" class="inp-style" type="text" name="" placeholder="New York, United States" required>
             </div>
             <div class="inputs">
                 <div class="input-group">
                     <label" for="">Departure</label>
-                    <input class="inp-style" type="date" name="">
+                    <input id="departure-date" class="inp-style" type="date" name="" required>
                 </div>
                 <div class="input-group">
                     <label for="">Return</label>
-                    <input class="inp-style" type="date" name="">
+                    <input id="return-date" class="inp-style" type="date" name="" required>
                 </div>
             </div>
             <div class="input-group f-class">
@@ -107,9 +107,63 @@
                     </div>
                 </div>
             </div>
-            <button class="btn-style">Book Now</button>
+            <button onclick="createInvoice()" class="btn-style">Book Now</button>
         </div>
     </main>
+    <section id="invoice-area" class="invoice-section">
+        <h2 class="text-center invoice-title">Invoice</h2>
+        <div class="invoice-details row">
+            <div class="col-md-6 cruise-details">
+                <h2>Cristina Rose</h2>
+                <h3>Cruise Booking Services</h3>
+            </div>
+            <div class="col-md-6">
+                <h6>Flying From: <span id="invoice-flyingFrom"></span></h6>
+                <h6>Flying To: <span id="invoice-flyingTo"></span></h6>
+                <h6>Departure: <span id="invoice-departure"></span></h6>
+                <h6>Return: <span id="invoice-return"></span></h6>
+            </div>
+        </div>
+        <div class="invoice-table">
+            <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">Description</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Price</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>First Class</td>
+                    <td id="first-quantity"></td>
+                    <td id="first-total"></td>
+                  </tr>
+                  <tr>
+                    <td>Economy Class</td>
+                    <td id="economy-quantity"></td>
+                    <td id="economy-total"></td>
+                  </tr>
+                  
+                  <tr>
+                    <td></td>
+                    <td><strong>Sub-Total</strong></td>
+                    <td id="invoice-subtotal"></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td><strong>VAT</strong></td>
+                    <td id="invoice-vat"></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td><strong>Total</strong></td>
+                    <td id="invoice-total"></td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </section>
 
     <!-- Scripts -->
     <script>
@@ -125,6 +179,8 @@
                 qtyNewCount = qtyCount - 1;
             }
             qtyInput.value = qtyNewCount;
+            document.getElementById('first-quantity').innerText = qtyNewCount;
+            document.getElementById('economy-quantity').innerText = qtyNewCount;
             calculateTotal();
         }
 
@@ -132,21 +188,58 @@
         function calculateTotal() {
             const firstclassInput = document.getElementById('firstclass-count');
             const firstclassCount = parseInt(firstclassInput.value);
+            //Send First Class Quantity to invoice
+            document.getElementById('first-quantity').innerText = firstclassCount;
 
             const economyclassInput = document.getElementById('economyclass-count');
             const economyclassCount = parseInt(economyclassInput.value);
+            //Send Economy Class Quantity to invoice
+            document.getElementById('economy-quantity').innerText = economyclassCount;
 
             const firstclassTotal = firstclassCount * 150;
+            //Send First Class price to invoice
+            document.getElementById('first-total').innerText = '$' + firstclassTotal;
+
             const economyclassTotal = economyclassCount * 100;
+            //Send Economy Class price to invoice
+            document.getElementById('economy-total').innerText = '$' + economyclassTotal;
 
             const subtotal = firstclassTotal + economyclassTotal;
             document.getElementById('sub-total').innerText = '$' + subtotal;
+            //Send subtotal to invoice
+            document.getElementById('invoice-subtotal').innerText = '$' + subtotal;
 
             const vat = Math.round(subtotal * 0.1);
             document.getElementById('vat-charge').innerText = '$' + vat;
+            //Send VAT to invoice
+            document.getElementById('invoice-vat').innerText = '$' + vat;
 
             const grandTotal = subtotal + vat;
             document.getElementById('grand-total').innerText = '$' + grandTotal;
+            //Send Total to invoice
+            document.getElementById('invoice-total').innerText = '$' + grandTotal;
+        }
+
+        //For invoice
+        function createInvoice() {
+            //Booking Area Event handler
+            const mainArea = document.getElementById('main-area');
+            mainArea.style.display = "none";
+            const invoiceArea = document.getElementById('invoice-area');
+            invoiceArea.style.display = "block";
+
+            //Send Invoice Details
+            const flyingFrom = document.getElementById('flying-from').value;
+            document.getElementById('invoice-flyingFrom').innerText = flyingFrom;
+
+            const flyingTo = document.getElementById('flying-to').value;
+            document.getElementById('invoice-flyingTo').innerText = flyingTo;
+
+            const departureDate = document.getElementById('departure-date').value;
+            document.getElementById('invoice-departure').innerText = departureDate;
+
+            const returnDate = document.getElementById('return-date').value;
+            document.getElementById('invoice-return').innerText = returnDate;
         }
     </script>
 </body>

@@ -157,3 +157,29 @@ nav ul li a:hover, a.active{
     display: flex;
     justify-content: space-between;
 }
+
+#invoice-area{
+    display: none;
+}
+.invoice-section{
+    background-color: whitesmoke;
+    border: 1px solid #ddd;
+    padding: 20px 10px;
+    border-radius: 5px;
+    width: 90%;
+    margin: 20px auto;
+    height: 700px;
+}
+.invoice-title{
+    margin: 10px 0 40px 0;
+}
+
+.invoice-table{
+    margin: 10px;
+    padding: 20px;
+}
+
+.cruise-details{
+    padding-left: 10%;
+    padding-top: 10px;
+}
