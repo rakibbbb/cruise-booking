@@ -85,7 +85,7 @@
                         <p>Subtotal</p>
                     </div>
                     <div class="right">
-                        <p>$500</p>
+                        <p id="sub-total">$0</p>
                     </div>
                 </div>
 
@@ -94,7 +94,7 @@
                         <p>Charge 10% VAT</p>
                     </div>
                     <div class="right">
-                        <p>$50</p>
+                        <p id="vat-charge">$0</p>
                     </div>
                 </div>
                 <hr>
@@ -103,7 +103,7 @@
                         <h4>Total</h4>
                     </div>
                     <div class="right">
-                        <p>$550</p>
+                        <p id="grand-total">$0</p>
                     </div>
                 </div>
             </div>
@@ -113,7 +113,7 @@
 
     <!-- Scripts -->
     <script>
-        //First Class Ticket
+        //Cruise Fare Ticket
         function handleTicketQuantity(fareClass, isIncrease) {
             const qtyInput = document.getElementById(fareClass + '-count');
             const qtyCount = parseInt(qtyInput.value);
@@ -125,35 +125,29 @@
                 qtyNewCount = qtyCount - 1;
             }
             qtyInput.value = qtyNewCount;
+            calculateTotal();
         }
 
-        // //First Class Ticket
-        // function handleFirstClass(isIncrease) {
-        //     const qtyInput = document.getElementById('firstclass-count');
-        //     const qtyCount = parseInt(qtyInput.value);
-        //     let qtyNewCount = qtyCount;
-        //     if(isIncrease == true){
-        //         qtyNewCount = qtyCount + 1;
-        //     }
-        //     if(isIncrease == false && qtyCount > 0){
-        //         qtyNewCount = qtyCount - 1;
-        //     }
-        //     qtyInput.value = qtyNewCount;
-        // }
-        
-        // //Economy Class Ticket
-        // function handleEconomyClass(isIncrease) {
-        //     const qtyInput = document.getElementById('economyclass-count');
-        //     const qtyCount = parseInt(qtyInput.value);
-        //     let qtyNewCount = qtyCount;
-        //     if(isIncrease == true){
-        //         qtyNewCount = qtyCount + 1;
-        //     }
-        //     if(isIncrease == false && qtyCount > 0){
-        //         qtyNewCount = qtyCount - 1;
-        //     }
-        //     qtyInput.value = qtyNewCount;
-        // }
+        // Calculate fare Cost & vat 
+        function calculateTotal() {
+            const firstclassInput = document.getElementById('firstclass-count');
+            const firstclassCount = parseInt(firstclassInput.value);
+
+            const economyclassInput = document.getElementById('economyclass-count');
+            const economyclassCount = parseInt(economyclassInput.value);
+
+            const firstclassTotal = firstclassCount * 150;
+            const economyclassTotal = economyclassCount * 100;
+
+            const subtotal = firstclassTotal + economyclassTotal;
+            document.getElementById('sub-total').innerText = '$' + subtotal;
+
+            const vat = Math.round(subtotal * 0.1);
+            document.getElementById('vat-charge').innerText = '$' + vat;
+
+            const grandTotal = subtotal + vat;
+            document.getElementById('grand-total').innerText = '$' + grandTotal;
+        }
     </script>
 </body>
 </html>
